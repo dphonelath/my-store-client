@@ -4,6 +4,7 @@ import Card from "../../Card"
 import styles from "./product-card.module.scss"
 import { Link } from "react-router-dom"
 
+
 const ProductCard = ({ name, img_url, price, description, id }) => {
   return (
     <Link to={`/products/${id}`}>
