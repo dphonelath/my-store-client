@@ -1,9 +1,12 @@
 import React, { Component } from "react"
 import Card from "../Card"
+import Loader from "../Loader"
+
 
 class ProductDetail extends Component   {
     state ={
-      product: {}
+      product: {},
+      isLoaded: false
     }
 
     componentDidMount(){
@@ -13,7 +16,8 @@ class ProductDetail extends Component   {
         .then(res => res.json())
         .then(data => {
           this.setState({
-            product: data.product
+            product: data.product,
+            isLoaded: true
           })
         })
         .catch(error => {
@@ -62,12 +66,17 @@ class ProductDetail extends Component   {
       return(
         <div>
           <h1> Welcome to Product Detail</h1>
-          <Card>
-            <h2>{this.state.product.name}</h2>
-            <img src={this.state.product.img_url}  alt= "Product Image" />
-            <h3> Price: ${this.state.product.price/100}.00</h3>
-            <button onClick={this.initiateStripeCheckout}>Purchase</button>
-          </Card>
+
+          {this.state.isLoaded ?
+            <Card>
+              <h2>{this.state.product.name}</h2>
+              <img src={this.state.product.img_url}  alt= "Product Image" />
+              <h3> Price: ${this.state.product.price/100}.00</h3>
+              <button onClick={this.initiateStripeCheckout}>Purchase</button>
+            </Card>
+            : <Loader />
+          }
+          
 
         </div>
       )
