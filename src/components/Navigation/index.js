@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-import { useAuth0 } from "../react-auth0-wrapper"
+import { useAuth0 } from "../../react-auth0-wrapper"
 
 
 const Navigation = () => {
@@ -11,6 +11,7 @@ const Navigation = () => {
     <nav>
       <Link to="/"> Home </Link>
       <Link to="/products"> Products </Link>
+      {isAuthenticated && <Link to="/profile"> Profile </Link>}
       {!isAuthenticated && (
         <button
           onClick={() =>
