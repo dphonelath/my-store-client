@@ -26,11 +26,11 @@ const ExternalApi = () => {
   }
 
   return (
-    <>
+    <div>
       <h1>External API</h1>
       <button onClick={callApi}>Ping API</button>
       {showResult && <code>{JSON.stringify(apiMessage, null, 2)}</code>}
-    </>
+    </div>
   )
 }
 
