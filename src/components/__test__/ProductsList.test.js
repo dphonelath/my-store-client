@@ -5,20 +5,22 @@ import ProductsList from "../ProductsList"
 import Loader from "../Loader"
 
 describe("<ProductsList /> functionality", () => {
+  let wrapper 
   const spyDidMount = jest.spyOn(ProductsList.prototype, "componentDidMount")
+  
+  beforeEach(() => {
+    wrapper = shallow(<ProductsList />)
+  })
 
   it("calls componentDidMount", () => {
-    const wrapper = shallow(<ProductsList />)
     expect(spyDidMount).toHaveBeenCalledTimes(1)
   })
 
   it("renders without crashing", () => {
-    const wrapper = shallow(<ProductsList />)
+    expect(wrapper).toBeTruthy()
   })
 
   it("renders a <Loader /> if no data is fetched", () => {
-    const wrapper = shallow(<ProductsList />)
-
     expect(wrapper.find(Loader).length).toBe(1)
   })
 })
