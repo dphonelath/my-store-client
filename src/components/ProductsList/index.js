@@ -26,7 +26,7 @@ class Products extends Component {
     render() {
       return (
         <div className= {styles.container}>
-          <header >
+          <header>
             <h1>Welcome to Products Page!</h1>
           </header>
 
